@@ -36,24 +36,26 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
 
-    message = TemplateSendMessage(
-        alt_text='AI',
-        template=ConfirmTemplate(
-            text='你有XXX嗎?',
-            actions=[
-                PostbackTemplateAction(
-                    label='有',
-                    text='postback text',
-                    data='action=buy&itemid=1'
-                ),
-                MessageTemplateAction(
-                    label='沒有',
-                    text='message text'
-                )
-            ]
-        )
-    )
-    line_bot_api.reply_message(event.reply_token, message)
+    # message = TemplateSendMessage(
+    #     alt_text='AI',
+    #     template=ConfirmTemplate(
+    #         text='你有XXX嗎?',
+    #         actions=[
+    #             PostbackTemplateAction(
+    #                 label='有',
+    #                 text='postback text',
+    #                 data='action=buy&itemid=1'
+    #             ),
+    #             MessageTemplateAction(
+    #                 label='沒有',
+    #                 text='message text'
+    #             )
+    #         ]
+    #     )
+    # )
+    # line_bot_api.reply_message(event.reply_token, message)
+    
+line_bot_api.reply_message(reply_token, TextSendMessage(text='Hello World!'))
 
 import os
 if __name__ == "__main__":
