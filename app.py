@@ -44,12 +44,12 @@ def handle_message(event):
                 PostbackTemplateAction(
                     label='有',
                     text='postback text',
-                    data='action=yes&itemid=1'
+                    data='action=buy&itemid=1'
                 ),
                 MessageTemplateAction(
                     label='沒有',
                     text='message text'
-                    data='action=no&itemid=0'
+                    data='action=buy&itemid=-0'
                 )
             ]
         )
