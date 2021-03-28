@@ -37,11 +37,9 @@ def handle_message(event):
     # line_bot_api.reply_message(event.reply_token, message)
 
     message = TemplateSendMessage(
-        alt_text='Buttons template',
-        template=ButtonsTemplate(
-            thumbnail_image_url='https://example.com/image.jpg',
-            title='Menu',
-            text='Please select',
+        alt_text='Confirm template',
+        template=ConfirmTemplate(
+            text='Are you sure?',
             actions=[
                 PostbackTemplateAction(
                     label='postback',
@@ -51,17 +49,11 @@ def handle_message(event):
                 MessageTemplateAction(
                     label='message',
                     text='message text'
-                ),
-                URITemplateAction(
-                    label='uri',
-                    uri='http://example.com/'
                 )
             ]
         )
     )
     line_bot_api.reply_message(event.reply_token, message)
-
-    #test
 
 import os
 if __name__ == "__main__":
