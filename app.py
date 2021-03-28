@@ -37,17 +37,17 @@ def handle_message(event):
     # line_bot_api.reply_message(event.reply_token, message)
 
     message = TemplateSendMessage(
-        alt_text='Confirm template',
+        alt_text='AI',
         template=ConfirmTemplate(
-            text='Are you sure?',
+            text='你有XXX嗎?',
             actions=[
                 PostbackTemplateAction(
-                    label='postback',
+                    label='有',
                     text='postback text',
                     data='action=buy&itemid=1'
                 ),
                 MessageTemplateAction(
-                    label='message',
+                    label='沒有',
                     text='message text'
                 )
             ]
