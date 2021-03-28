@@ -49,7 +49,6 @@ def handle_message(event):
                 MessageTemplateAction(
                     label='沒有',
                     text='message text'
-                    data='action=buy&itemid=-0'
                 )
             ]
         )
