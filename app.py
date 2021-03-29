@@ -113,7 +113,7 @@ def handler_postback(event):
     if action_data == 'step2':
         test2(event)
     elif action_data == 'step3':
-        test3()
+        test3(event)
 
     
 import os
