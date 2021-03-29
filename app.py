@@ -84,13 +84,18 @@ def test2(event):
         )
     )
 
+def test3(event):
+    message = TextSendMessage(text='Hello, world')
+    line_bot_api.reply_message(event.reply_token, message)
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
+    message_text = str(event.message.text).lower()
 
-    if event.message.text =='ai':
+    if message_text =='ai':
         test1(event)
 
 @handler.add(PostbackEvent)
@@ -107,7 +112,8 @@ def handler_postback(event):
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
     if action_data == 'step2':
         test2(event)
-
+    elif action_data == 'step3':
+        test3()
 
     
 import os
