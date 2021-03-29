@@ -43,14 +43,14 @@ def test1(event):
                         action=PostbackAction(
                             label='有',
                             text='1.有',
-                            data='action=step2&num=1'
+                            data='action=step2'
                         )
                     ),
                     QuickReplyButton(
                         action=PostbackAction(
                             label='沒有',
                             text='1.沒有',
-                            data='action=step2&num=0'
+                            data='action=step2'
                         )
                     )
                 ]
@@ -69,21 +69,21 @@ def test2(event):
                         action=PostbackAction(
                             label='有',
                             text='2.有',
-                            data='action=step3&num=1'
+                            data='action=step3'
                         )
                     ),
                     QuickReplyButton(
                         action=PostbackAction(
                             label='沒有',
                             text='2.沒有',
-                            data='action=step3&num=0'
+                            data='action=step3'
                         )
                     )
                 ]
             )
         )
     )
-
+x=0
 
 def test3(event):
 
@@ -112,16 +112,14 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-    num_data = data.get('num')
-    x = 0 
+    text_data = data.get('text')
+
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
     if action_data == 'step2':
         test2(event)
-        x = x + num
     elif action_data == 'step3':
         test3(event)
-        x = x + num
 
     if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
