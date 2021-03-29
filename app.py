@@ -104,37 +104,13 @@ def test2(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
-# def test4(event):
-#     line_bot_api.reply_message(
-#         event.reply_token,
-#         TextSendMessage(
-#             text='您有YYY嗎？？',
-#             quick_reply=QuickReply(
-#                 items=[
-#                     QuickReplyButton(
-#                         action=PostbackAction(
-#                             label='有',
-#                             text='2.有',
-#                             data='action=step3&num=1'
-#                         )
-#                     ),
-#                     QuickReplyButton(
-#                         action=PostbackAction(
-#                             label='沒有',
-#                             text='2.沒有',
-#                             data='action=step3&num=0'
-#                         )
-#                     )
-#                 ]
-#             )
-#         )
-#     )
-
-
 def test3(event):
-
+    x = 0 
     message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
+
+def calculator:
+    y = x + c 
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -161,7 +137,7 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-
+    action_data1 = data.get('num')
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
@@ -169,6 +145,7 @@ def handler_postback(event):
         test2(event)
     elif action_data == 'step2':
         test3(event)
+
 # int()
 import os
 if __name__ == "__main__":
