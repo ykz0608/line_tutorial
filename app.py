@@ -43,14 +43,14 @@ def test1(event):
                         action=PostbackAction(
                             label='有',
                             text='1.有',
-                            data='action=step2'
+                            data='action=step2&num=1'
                         )
                     ),
                     QuickReplyButton(
                         action=PostbackAction(
                             label='沒有',
                             text='1.沒有',
-                            data='action=step2'
+                            data='action=step2&num=0'
                         )
                     )
                 ]
@@ -69,14 +69,14 @@ def test2(event):
                         action=PostbackAction(
                             label='有',
                             text='2.有',
-                            data='action=step3'
+                            data='action=step3&num=1'
                         )
                     ),
                     QuickReplyButton(
                         action=PostbackAction(
                             label='沒有',
                             text='2.沒有',
-                            data='action=step3'
+                            data='action=step3&num=0'
                         )
                     )
                 ]
@@ -84,8 +84,10 @@ def test2(event):
         )
     )
 
+
 def test3(event):
-    message = TextSendMessage(text='Hello, world')
+
+    message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
 
 # 處理訊息
@@ -97,6 +99,10 @@ def handle_message(event):
 
     if message_text =='ai':
         test1(event)
+    else:
+        message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
+        line_bot_api.reply_message(event.reply_token, message)
+
 
 @handler.add(PostbackEvent)
 def handler_postback(event):
@@ -106,17 +112,17 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-    service_data = data.get('service')
-
+    num_data = data.get('num')
+    x = 0 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
     if action_data == 'step2':
         test2(event)
+        x = x + num
     elif action_data == 'step3':
         test3(event)
+        x = x + num
 
-    
-import os
-if __name__ == "__main__":
+    if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
