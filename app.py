@@ -59,6 +59,69 @@ def test1(event):
     )
 
 def test2(event):
+    carousel_template_message = TemplateSendMessage(
+        alt_text='Carousel template',
+        template=CarouselTemplate(
+            columns=[
+                CarouselColumn(
+                    thumbnail_image_url='https://i.imgur.com/zTbh6K1.jpg',
+                    title='選單一',
+                    text='我是小火龍',
+                    actions=[
+                        # data參數可以自定義（這邊定義步驟和服務）
+                        PostbackAction(
+                            label='服務一',
+                            display_text='服務一',
+                            data='action=step2&service=服務一'
+                        ),
+                        PostbackAction(
+                            label='服務二',
+                            display_text='服務二',
+                            data='action=step2&service=服務二'
+                        ),
+                        PostbackAction(
+                            label='服務三',
+                            display_text='服務三',
+                            data='action=step2&service=服務三'
+                        )
+                    ]
+                ),
+                CarouselColumn(
+                    thumbnail_image_url='https://i.imgur.com/w6uEE5d.jpg',
+                    title='選單二',
+                    text='我是傑尼龜',
+                    actions=[
+                        # data參數可以自定義（這邊定義步驟和服務）
+                        PostbackAction(
+                            label='服務一',
+                            display_text='服務一',
+                            data='action=step2&service=服務一'
+                        ),
+                        PostbackAction(
+                            label='服務二',
+                            display_text='服務二',
+                            data='action=step2&service=服務二'
+                        ),
+                        PostbackAction(
+                            label='服務三',
+                            display_text='服務三',
+                            data='action=step2&service=服務三'
+                        )
+                    ]
+                )
+            ]
+        )
+    )
+
+    line_bot_api.reply_message(
+        reply_token=event.reply_token,
+        messages=[
+            TextSendMessage(text='您想要選什麼服務？'),
+            carousel_template_message
+        ]
+    )
+
+def test4(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(
@@ -103,7 +166,6 @@ def handle_message(event):
         message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
 
-
 @handler.add(PostbackEvent)
 def handler_postback(event):
     # 我們需要把拿到的data字串轉換成字典，那我們會使用urllib裡的prase_qsl
@@ -113,15 +175,15 @@ def handler_postback(event):
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
     num_data = data.get('num')
-    x = 0 
+
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
     if action_data == 'step2':
         test2(event)
-        x = x + num
+        x = x 
     elif action_data == 'step3':
         test3(event)
-        x = x + num
+int()
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
