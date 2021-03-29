@@ -145,9 +145,7 @@ def handler_postback(event):
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
     if action_data == 'step1':
-        # test2(event)
-        message = TextSendMessage(text=data)
-        line_bot_api.reply_message(event.reply_token, message)
+        test2(event)
     elif action_data == 'step2':
         test3(event)
 
