@@ -110,7 +110,7 @@ def test3(event):
     message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
 
-def calculator():
+# def calculator():
 
     
 
@@ -140,7 +140,7 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-    # service_data = data.get('service')
+    service_data = data.get('service')
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
