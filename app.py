@@ -86,6 +86,7 @@ def test2(event):
 
 
 def test3(event):
+
     message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
 
@@ -121,7 +122,7 @@ def handler_postback(event):
     elif action_data == 'step3':
         test3(event)
         x = x + num
-
+import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
