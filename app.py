@@ -1,3 +1,4 @@
+from os import X_OK
 from flask import Flask, request, abort
 
 from linebot import (
@@ -69,12 +70,12 @@ def test1(event):
             PostbackTemplateAction(
                 label='有',
                 text='有',
-                data='action=step1&num=1'
+                data='action=step1&itemid=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
                 text='沒有',
-                data='action=step1&num=0'
+                data='action=step1&itemid=0'
             )
         ]
     )
@@ -92,12 +93,12 @@ def test2(event):
             PostbackTemplateAction(
                 label='有',
                 text='有',
-                data='action=step2&num=1'
+                data='action=step2&itemid=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
                 text='沒有',
-                data='action=step2&num=0'
+                data='action=step2&itemid=0'
             )
         ]
     )
@@ -109,8 +110,9 @@ def test3(event):
     message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
 
-# def calculator:
-#     y = x + c 
+def calculator():
+
+    
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
@@ -129,6 +131,7 @@ def handle_message(event):
         message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
 
+
 @handler.add(PostbackEvent)
 def handler_postback(event):
     # 我們需要把拿到的data字串轉換成字典，那我們會使用urllib裡的prase_qsl
@@ -137,12 +140,14 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-    action_data1 = data.get('num')
+    service_data = data.get('service')
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
     if action_data == 'step1':
-        test2(event)
+        message = TextSendMessage(text=data)
+        line_bot_api.reply_message(event.reply_token, message)
+        # test2(event)
     elif action_data == 'step2':
         test3(event)
 
