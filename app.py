@@ -32,91 +32,103 @@ def callback():
         abort(400)
     return 'OK'
 
-def test1(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(
-            text='您有XXX嗎？？',
-            quick_reply=QuickReply(
-                items=[
-                    QuickReplyButton(
-                        action=PostbackAction(
-                            label='有',
-                            text='1.有',
-                            data='action=step2&num=1'
-                        )
-                    ),
-                    QuickReplyButton(
-                        action=PostbackAction(
-                            label='沒有',
-                            text='1.沒有',
-                            data='action=step2&num=0'
-                        )
-                    )
-                ]
-            )
-        )
-    )
+# def test1(event):
+#     line_bot_api.reply_message(
+#         event.reply_token,
+#         TextSendMessage(
+#             text='您有XXX嗎？？',
+#             quick_reply=QuickReply(
+#                 items=[
+#                     QuickReplyButton(
+#                         action=PostbackAction(
+#                             label='有',
+#                             text='1.有',
+#                             data='action=step2&num=1'
+#                         )
+#                     ),
+#                     QuickReplyButton(
+#                         action=PostbackAction(
+#                             label='沒有',
+#                             text='1.沒有',
+#                             data='action=step2&num=0'
+#                         )
+#                     )
+#                 ]
+#             )
+#         )
+#     )
 
-def test2(event):
+def test1(event):
     message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
         thumbnail_image_url='https://example.com/image.jpg',
-        title='Menu',
-        text='Please select',
+        title='你有XXX嗎？',
+        text='XXX是。。。。。。。',
         actions=[
             PostbackTemplateAction(
-                label='postback',
-                text='postback text',
-                data='action=buy&itemid=1'
+                label='有',
+                text='有',
+                data='action=step1&num=1'
             ),
-            MessageTemplateAction(
-                label='message',
-                text='message text'
-            ),
-            URITemplateAction(
-                label='uri',
-                uri='http://example.com/'
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step1&num=0'
             )
         ]
     )
 )
     line_bot_api.reply_message(event.reply_token, message)
 
-    # line_bot_api.reply_message(
-    #     reply_token=event.reply_token,
-    #     messages=[
-    #         TextSendMessage(text='您想要選什麼服務？'),
-    #         carousel_template_message
-    #     ]
-    # )
-
-def test4(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(
-            text='您有YYY嗎？？',
-            quick_reply=QuickReply(
-                items=[
-                    QuickReplyButton(
-                        action=PostbackAction(
-                            label='有',
-                            text='2.有',
-                            data='action=step3&num=1'
-                        )
-                    ),
-                    QuickReplyButton(
-                        action=PostbackAction(
-                            label='沒有',
-                            text='2.沒有',
-                            data='action=step3&num=0'
-                        )
-                    )
-                ]
+def test2(event):
+    message = TemplateSendMessage(
+    alt_text='Buttons template',
+    template=ButtonsTemplate(
+        thumbnail_image_url='https://example.com/image.jpg',
+        title='你有YYY嗎？',
+        text='YYY是。。。。。。。',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step2&num=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step2&num=0'
             )
-        )
+        ]
     )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+# def test4(event):
+#     line_bot_api.reply_message(
+#         event.reply_token,
+#         TextSendMessage(
+#             text='您有YYY嗎？？',
+#             quick_reply=QuickReply(
+#                 items=[
+#                     QuickReplyButton(
+#                         action=PostbackAction(
+#                             label='有',
+#                             text='2.有',
+#                             data='action=step3&num=1'
+#                         )
+#                     ),
+#                     QuickReplyButton(
+#                         action=PostbackAction(
+#                             label='沒有',
+#                             text='2.沒有',
+#                             data='action=step3&num=0'
+#                         )
+#                     )
+#                 ]
+#             )
+#         )
+#     )
 
 
 def test3(event):
@@ -133,6 +145,10 @@ def handle_message(event):
 
     if message_text =='ai':
         test1(event)
+    elif message_text =='有':
+        pass
+    elif message_text == '沒有':
+        pass
     else:
         message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
@@ -145,16 +161,15 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-    num_data = data.get('num')
+
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
-    if action_data == 'step2':
+    if action_data == 'step1':
         test2(event)
-        x = x 
-    elif action_data == 'step3':
+    elif action_data == 'step2':
         test3(event)
-int()
+# int()
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
