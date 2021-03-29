@@ -109,8 +109,8 @@ def test3(event):
     message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
 
-def calculator:
-    y = x + c 
+# def calculator:
+#     y = x + c 
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
