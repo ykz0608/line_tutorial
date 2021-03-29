@@ -15,9 +15,6 @@ line_bot_api = LineBotApi('sOFovsX2G+IF/aWIeps6rHlREUKXOmt5LsplO/okjzexlavY41Ohq
 # Channel Secret
 handler = WebhookHandler('3ea3c4dafa84003e10551844a2f4d830')
 
-try:
-    line_bot_api.reply_message('<reply_token>', TextSendMessage(text='Hello World!'))
-    
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -33,30 +30,43 @@ def callback():
         abort(400)
     return 'OK'
 
+def quick_reply_event(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(
+            text='您家中洗衣機為以下何種類型？？',
+            quick_reply=QuickReply(
+                items=[
+                    QuickReplyButton(
+                        action=PostbackAction(
+                            label='直立式洗衣機（開口朝上）',
+                            text='直立式洗衣機（開口朝上）',
+                            data='action=step4'
+                        )
+                    ),
+                    QuickReplyButton(
+                        action=PostbackAction(
+                            label='滾筒式洗衣機（開口朝前）',
+                            text='滾筒式洗衣機（開口朝前）',
+                            data='action=step4'
+                        )
+                    )
+                ]
+            )
+        )
+    )
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
 
-    # message = TemplateSendMessage(
-    #     alt_text='AI',
-    #     template=ConfirmTemplate(
-    #         text='你有XXX嗎?',
-    #         actions=[
-    #             PostbackTemplateAction(
-    #                 label='有',
-    #                 text='postback text',
-    #                 data='action=buy&itemid=1'
-    #             ),
-    #             MessageTemplateAction(
-    #                 label='沒有',
-    #                 text='message text'
-    #             )
-    #         ]
-    #     )
-    # )
-    # line_bot_api.reply_message(event.reply_token, message)
+    if message_text =='AI':
+        quick_reply_event(event)
+    else:
+        pass
+
     
 import os
 if __name__ == "__main__":
