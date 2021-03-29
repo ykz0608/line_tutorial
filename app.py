@@ -82,15 +82,15 @@ def test2(event):
         ]
     )
 )
-line_bot_api.reply_message(event.reply_token, message)
+    line_bot_api.reply_message(event.reply_token, message)
 
-    line_bot_api.reply_message(
-        reply_token=event.reply_token,
-        messages=[
-            TextSendMessage(text='您想要選什麼服務？'),
-            carousel_template_message
-        ]
-    )
+    # line_bot_api.reply_message(
+    #     reply_token=event.reply_token,
+    #     messages=[
+    #         TextSendMessage(text='您想要選什麼服務？'),
+    #         carousel_template_message
+    #     ]
+    # )
 
 def test4(event):
     line_bot_api.reply_message(
