@@ -1,4 +1,3 @@
-from abc import abstractmethod
 from os import X_OK
 from flask import Flask, request, abort
 
@@ -44,14 +43,14 @@ def callback():
 #                     QuickReplyButton(
 #                         action=PostbackAction(
 #                             label='有',
-#                             text='有',
+#                             text='1.有',
 #                             data='action=step2&num=1'
 #                         )
 #                     ),
 #                     QuickReplyButton(
 #                         action=PostbackAction(
 #                             label='沒有',
-#                             text='沒有',
+#                             text='1.沒有',
 #                             data='action=step2&num=0'
 #                         )
 #                     )
@@ -71,18 +70,17 @@ def test1(event):
             PostbackTemplateAction(
                 label='有',
                 text='有',
-                data='action=step1|num=1'
+                data='action=step1&itemid=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
                 text='沒有',
-                data='action=step1|num=0'
+                data='action=step1&itemid=0'
             )
         ]
     )
 )
     line_bot_api.reply_message(event.reply_token, message)
-
 
 def test2(event):
     message = TemplateSendMessage(
@@ -95,12 +93,12 @@ def test2(event):
             PostbackTemplateAction(
                 label='有',
                 text='有',
-                data='action=step2|num=1'
+                data='action=step2&itemid=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
                 text='沒有',
-                data='action=step2|num=0'
+                data='action=step2&itemid=0'
             )
         ]
     )
@@ -108,11 +106,9 @@ def test2(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 def test3(event):
-    message = TextSendMessage(23)
+    y = 23.0+event+3.546456
+    message = TextSendMessage(y)
     line_bot_api.reply_message(event.reply_token, message)
-
-    # message = TextSendMessage(text=event.message.text)
-    # line_bot_api.reply_message(event.reply_token, message)
 
 # def calculator():
 
@@ -142,29 +138,16 @@ def handler_postback(event):
     # prase_qsl可以解析一個query字串把它轉換成一個list
     # 那list如果要轉換成字典，在前面加上dict即可
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
-
     data = dict(parse_qsl(event.postback.data))
-    #data1 = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
+    service_data = data.get('service')
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
     if action_data == 'step1':
-        # if num_data =='1':
-        #     return x == 1
-        # elif num_data =='0':
-        #     abstractmethod
-        test2(event) 
+        test2(event) & x =0
     elif action_data == 'step2':
         test3(event)
-
-
-    # reply_token = event.reply_token
-    # data = event.postback.data
-    # if(data == 'action=step1&itemid=1'):
-    #     test2(event)
-    # elif(data == 'action=step1&itemid=0'):
-    #     test2(event)
 
 # int()
 import os
