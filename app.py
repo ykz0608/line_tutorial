@@ -44,14 +44,14 @@ def callback():
 #                     QuickReplyButton(
 #                         action=PostbackAction(
 #                             label='有',
-#                             text='1.有',
+#                             text='有',
 #                             data='action=step2&num=1'
 #                         )
 #                     ),
 #                     QuickReplyButton(
 #                         action=PostbackAction(
 #                             label='沒有',
-#                             text='1.沒有',
+#                             text='沒有',
 #                             data='action=step2&num=0'
 #                         )
 #                     )
@@ -70,12 +70,12 @@ def test1(event):
         actions=[
             PostbackTemplateAction(
                 label='有',
-                text='有',
+                text='1.有',
                 data='action=step1|num=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
-                text='沒有',
+                text='1.沒有',
                 data='action=step1|num=0'
             )
         ]
