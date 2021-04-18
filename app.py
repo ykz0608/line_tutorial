@@ -70,12 +70,12 @@ def test1(event):
             PostbackTemplateAction(
                 label='有',
                 text='有',
-                data='action=step1&itemid=1'
+                data='action=step1|num=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
                 text='沒有',
-                data='action=step1&itemid=0'
+                data='action=step1|num=0'
             )
         ]
     )
@@ -94,12 +94,12 @@ def test2(event):
             PostbackTemplateAction(
                 label='有',
                 text='有',
-                data='action=step2&itemid=1'
+                data='action=step2|num=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
                 text='沒有',
-                data='action=step2&itemid=0'
+                data='action=step2|num=0'
             )
         ]
     )
@@ -141,14 +141,20 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
 
     data = dict(parse_qsl(event.postback.data))
+    data1 = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-    service_data = data.get('service')
+    num_data = data1.get('num')
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
-    if action_data == 'step1':
-        test2(event) & x == 0
-    elif action_data == 'step2':
+    # if action_data == 'step1':
+    #     test2(event) 
+    # elif action_data == 'step2':
+    #     test3(event)
+
+    if num_data == '1':
+        test2(event) 
+    elif num_data == '0':
         test3(event)
 
     # reply_token = event.reply_token
