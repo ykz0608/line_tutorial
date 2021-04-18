@@ -94,12 +94,12 @@ def test2(event):
         actions=[
             PostbackTemplateAction(
                 label='有',
-                text='有',
+                text='1.有',
                 data='action=step2|num=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
-                text='沒有',
+                text='1.沒有',
                 data='action=step2|num=0'
             )
         ]
@@ -127,8 +127,8 @@ def handle_message(event):
 
     if message_text =='ai':
         test1(event)
-    elif message_text =='有':
-        pass
+    # elif message_text =='有':
+    #     pass
     elif message_text == '沒有':
         pass
     else:
