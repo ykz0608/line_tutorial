@@ -108,8 +108,7 @@ def test2(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 def test3(event):
-    y = 23.0+3.546456
-    message = TextSendMessage(y)
+    message = TextSendMessage(23)
     line_bot_api.reply_message(event.reply_token, message)
 
     # message = TextSendMessage(text=event.message.text)
