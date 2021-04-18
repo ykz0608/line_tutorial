@@ -153,11 +153,11 @@ def handler_postback(event):
     # elif action_data == 'step2':
     #     test3(event)
 
-    if(data == 'step1'):
+    if(data == 'action=step1'):
         test2(event)
-    elif(data == 'step2'):
+    elif(data == 'action=step2'):
         test3(event)
-        
+
 # int()
 import os
 if __name__ == "__main__":
