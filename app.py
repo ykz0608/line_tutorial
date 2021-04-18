@@ -1,3 +1,4 @@
+from abc import abstractmethod
 from os import X_OK
 from flask import Flask, request, abort
 
@@ -141,21 +142,23 @@ def handler_postback(event):
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
 
     data = dict(parse_qsl(event.postback.data))
-    data1 = dict(parse_qsl(event.postback.data))
+    #data1 = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
-    num_data = data1.get('num')
+    num_data = data.get('num')
+
+    x = 0
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
-    # if action_data == 'step1':
-    #     test2(event) 
-    # elif action_data == 'step2':
-    #     test3(event)
-
-    if num_data == '1':
-        test2(event) 
-    elif num_data == '0':
+    if action_data == 'step1':
+        if num_data =='1':
+            return x == 1
+        elif num_data =='0':
+            abstractmethod
+        test3(event) 
+    elif action_data == 'step2':
         test3(event)
+
 
     # reply_token = event.reply_token
     # data = event.postback.data
