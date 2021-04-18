@@ -82,6 +82,7 @@ def test1(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
+
 def test2(event):
     message = TemplateSendMessage(
     alt_text='Buttons template',
@@ -106,8 +107,8 @@ def test2(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 def test3(event):
-    x = 0 
-    message = TextSendMessage(x)
+    y = 23.0+event+3.546456
+    message = TextSendMessage(y)
     line_bot_api.reply_message(event.reply_token, message)
 
 # def calculator():
@@ -138,17 +139,25 @@ def handler_postback(event):
     # prase_qsl可以解析一個query字串把它轉換成一個list
     # 那list如果要轉換成字典，在前面加上dict即可
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
-    data = dict(parse_qsl(event.postback.data))
-    action_data = data.get('action')
-    service_data = data.get('service')
+
+    reply_token = event.reply_token
+    data = event.postback.data
+    #data = dict(parse_qsl(event.postback.data))
+    #action_data = data.get('action')
+    # service_data = data.get('service')
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
-    if action_data == 'step1':
-        test2(event)
-    elif action_data == 'step2':
-        test3(event)
+    # if action_data == 'step1':
+    #     test2(event) & x == 0
+    # elif action_data == 'step2':
+    #     test3(event)
 
+    if(data == 'step1'):
+        test2(event)
+    elif(data == 'step2'):
+        test3(event)
+        
 # int()
 import os
 if __name__ == "__main__":
