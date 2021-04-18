@@ -70,12 +70,12 @@ def test1(event):
         actions=[
             PostbackTemplateAction(
                 label='有',
-                text='1.有',
+                text='有',
                 data='action=step1|num=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
-                text='1.沒有',
+                text='沒有',
                 data='action=step1|num=0'
             )
         ]
@@ -94,12 +94,12 @@ def test2(event):
         actions=[
             PostbackTemplateAction(
                 label='有',
-                text='1.有',
+                text='有',
                 data='action=step2|num=1'
             ),
             PostbackTemplateAction(
                 label='沒有',
-                text='1.沒有',
+                text='沒有',
                 data='action=step2|num=0'
             )
         ]
@@ -127,8 +127,8 @@ def handle_message(event):
 
     if message_text =='ai':
         test1(event)
-    # elif message_text =='有':
-    #     pass
+    elif message_text =='有':
+        pass
     elif message_text == '沒有':
         pass
     else:
@@ -157,7 +157,7 @@ def handler_postback(event):
         #     return x == 1
         # elif num_data =='0':
         #     abstractmethod
-        test3(event) 
+        test2(event) 
     elif action_data == 'step2':
         test3(event)
 
