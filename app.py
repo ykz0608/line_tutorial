@@ -153,9 +153,9 @@ def handler_postback(event):
     # elif action_data == 'step2':
     #     test3(event)
 
-    if(data == 'action=step1'):
+    if(data == 'action=step1&itemid=0'):
         test2(event)
-    elif(data == 'action=step2'):
+    elif(data == 'action=step1&itemid=1'):
         test3(event)
 
 # int()
