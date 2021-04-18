@@ -140,23 +140,23 @@ def handler_postback(event):
     # 那list如果要轉換成字典，在前面加上dict即可
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
 
-    reply_token = event.reply_token
-    data = event.postback.data
-    #data = dict(parse_qsl(event.postback.data))
-    #action_data = data.get('action')
-    # service_data = data.get('service')
+    data = dict(parse_qsl(event.postback.data))
+    action_data = data.get('action')
+    service_data = data.get('service')
 
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
-    # if action_data == 'step1':
-    #     test2(event) & x == 0
-    # elif action_data == 'step2':
-    #     test3(event)
-
-    if(data == 'action=step1'):
-        test2(event)
-    elif(data == 'action=step1&itemid=1'):
+    if action_data == 'step1':
+        test2(event) & x == 0
+    elif action_data == 'step2':
         test3(event)
+
+    # reply_token = event.reply_token
+    # data = event.postback.data
+    # if(data == 'action=step1&itemid=1'):
+    #     test2(event)
+    # elif(data == 'action=step1&itemid=0'):
+    #     test2(event)
 
 # int()
 import os
