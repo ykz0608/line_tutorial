@@ -117,7 +117,7 @@ def test3(event,x):
         message = TextSendMessage('error。。。')
         line_bot_api.reply_message(event.reply_token, message)
 
-y = 2*x[0]+3*x[1]
+#y = 2*x[0]+3*x[1]
 
 def test4(event,x):
     y = cal(x)
