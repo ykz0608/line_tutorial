@@ -173,19 +173,19 @@ def handler_postback(event):
 
     if action_data == 'step1':
         if num_data =='1':
-            x.append(1)
-        elif num_data =='0':
-            x.append(0)
-        test2(event) 
-        return x
-    elif action_data == 'step2':
-        if num_data =='1':
-            x.append(0)
-        elif num_data=='0':
-            x.append(0)
-            return x
-        test4(event,x)
-       # return x
+            test2(event) 
+        # elif num_data =='0':
+        #     x.append(0)
+        # test2(event) 
+        # return x
+    # elif action_data == 'step2':
+    #     if num_data =='1':
+    #         x.append(0)
+    #     elif num_data=='0':
+    #         x.append(0)
+    #         return x
+    #     test4(event,x)
+    #    # return x
     
 
 # int()
