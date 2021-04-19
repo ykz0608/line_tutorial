@@ -155,7 +155,8 @@ def handle_message(event):
     else:
         message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
-x = []
+
+
 @handler.add(PostbackEvent)
 def handler_postback(event):
     # 我們需要把拿到的data字串轉換成字典，那我們會使用urllib裡的prase_qsl
@@ -166,7 +167,7 @@ def handler_postback(event):
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
     num_data = data.get('itemid')
-
+    x=[]
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
 
