@@ -134,12 +134,11 @@ def test4(event,x):
 def test5(event):
     x =[0,1]
     y = 2*x[0]+3*x[1]
-    if y <= 5:
-        message = TextSendMessage('A.由於您的分數未達到%所以。。。',y)
-        line_bot_api.reply_message(event.reply_token, message)
-    elif y>= 6:
-        message = TextSendMessage('B.由於您的分數未達到%所以。。。',y)
-        line_bot_api.reply_message(event.reply_token, message)
+    message = TextSendMessage(y)
+    line_bot_api.reply_message(event.reply_token, message)
+
+# def test6():
+
 
 
 # 處理訊息
