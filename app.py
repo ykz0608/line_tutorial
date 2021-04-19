@@ -157,7 +157,7 @@ def test7(event):
         message = TextSendMessage(result_text+'a')
         line_bot_api.reply_message(event.reply_token, message)
     elif formula <=4:
-        message = TextSendMessage(result_text'b')
+        message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
 
