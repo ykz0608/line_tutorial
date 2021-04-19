@@ -132,9 +132,9 @@ def test4(event,x):
         ]
     )
 def test5(event,):
-    y = cal(x)
-    z =str(y)
-    message = TextSendMessage(z)
+    # y = cal(x)
+    # z =str(y)
+    message = TextSendMessage('z')
     line_bot_api.reply_message(event.reply_token, message)
 
 def cal(x):
