@@ -18,11 +18,6 @@ line_bot_api = LineBotApi('sOFovsX2G+IF/aWIeps6rHlREUKXOmt5LsplO/okjzexlavY41Ohq
 # Channel Secret
 handler = WebhookHandler('3ea3c4dafa84003e10551844a2f4d830')
 
-# # 在第一次接觸到請求之後，就會初始資料庫
-# @app.before_first_request
-# def init():
-#     init_db()
-
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -37,32 +32,6 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
-
-# def test1(event):
-#     line_bot_api.reply_message(
-#         event.reply_token,
-#         TextSendMessage(
-#             text='您有XXX嗎？？',
-#             quick_reply=QuickReply(
-#                 items=[
-#                     QuickReplyButton(
-#                         action=PostbackAction(
-#                             label='有',
-#                             text='1.有',
-#                             data='action=step2&num=1'
-#                         )
-#                     ),
-#                     QuickReplyButton(
-#                         action=PostbackAction(
-#                             label='沒有',
-#                             text='1.沒有',
-#                             data='action=step2&num=0'
-#                         )
-#                     )
-#                 ]
-#             )
-#         )
-#     )
 
 def test1(event):
     message = TemplateSendMessage(
@@ -136,6 +105,7 @@ def test4(event,x):
             )
         ]
     )
+
 def test5(event,x):
     formula = 4*x[0]+3*x[1]
     if formula >= 5:
@@ -156,7 +126,7 @@ def test6(event):
         line_bot_api.reply_message(event.reply_token, message)
 
 def test7(event):
-    message = TextSendMessage(x)
+    message = TextSendMessage('x')
     line_bot_api.reply_message(event.reply_token, message)
 
 
