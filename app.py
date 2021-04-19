@@ -132,22 +132,32 @@ def test4(event,x):
         ]
     )
 def test5(event):
-    y = 4*x[0]+3*x[1]
-    if y >= 5:
-        message = TextSendMessage(text='A.由於您的分數未達到%所以。。。')
+    formula = 4*x[0]+3*x[1]
+    if formula >= 5:
+        message = TextSendMessage(text='A.由於您的分數達到了30所以是屬於。。。')
         line_bot_api.reply_message(event.reply_token, message)
-    elif y <=4:
-        message = TextSendMessage(text='B.由於您的分數未達到%所以。。。')
+    elif formula <=4:
+        message = TextSendMessage(text='B.由於您的分數未達到30所以是屬於。。。')
         line_bot_api.reply_message(event.reply_token, message)
 
 def test6(event):
-    y = 4*x[0]+3*x[1]
-    result_text = 'A.由於您的分數是{no}X%這個區間屬於。。。'.format(no=y)
-    if y >= 5:
+    formula = 4*x[0]+3*x[1]
+    result_text = '由於您的分數是{no}這個區間，屬於'.format(no=formula)
+    if formula >= 5:
         message = TextSendMessage(result_text)
         line_bot_api.reply_message(event.reply_token, message)
-    elif y <=4:
+    elif formula <=4:
         message = TextSendMessage(result_text)
+        line_bot_api.reply_message(event.reply_token, message)
+
+def test7(event):
+    formula = 4*x[0]+3*x[1]
+    result_text = '由於您的分數是{no}這個區間，達到了30分屬於'.format(no=formula)
+    if formula >= 5:
+        message = TextSendMessage(result_text+'a')
+        line_bot_api.reply_message(event.reply_token, message)
+    elif formula <=4:
+        message = TextSendMessage(result_text'b')
         line_bot_api.reply_message(event.reply_token, message)
 
 
@@ -195,9 +205,8 @@ def handler_postback(event):
             x.append(1)
         elif num_data=='0':
             x.append(0)
-        test6(event)
+        test7(event)
     
-# int()
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
