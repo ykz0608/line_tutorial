@@ -106,9 +106,11 @@ def test2(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 def test3(event):
-    y = cal(x)
+    #y = cal(x)
     message = TextSendMessage('y')
     line_bot_api.reply_message(event.reply_token, message)
+
+
 
 def cal(x):
     y = 2*x[0]+3*x[1]
