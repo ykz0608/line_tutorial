@@ -106,9 +106,13 @@ def test2(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 def test3(event):
-    #y = cal(x)
-    message = TextSendMessage('y')
-    line_bot_api.reply_message(event.reply_token, message)
+    y = cal(x)
+    if y > 5:
+        message = TextSendMessage('A.由於您的分數未達到%所以。。。')
+        line_bot_api.reply_message(event.reply_token, message)
+    elif y < 4:
+        message = TextSendMessage('B.由於您的分數未達到%所以。。。')
+        line_bot_api.reply_message(event.reply_token, message)
 
 
 
