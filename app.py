@@ -159,6 +159,7 @@ def handler_postback(event):
         elif num_data=='0':
             x.append(0)
         test3(event)
+    return x
 
 # int()
 import os
