@@ -141,16 +141,6 @@ def test5(event,x):
         line_bot_api.reply_message(event.reply_token, message)
 
 def test6(event):
-    formula = 4*x[0]+3*x[1]
-    result_text = '由於您的分數是{no}這個區間，屬於'.format(no=formula)
-    if formula >= 5:
-        message = TextSendMessage(result_text)
-        line_bot_api.reply_message(event.reply_token, message)
-    elif formula <=4:
-        message = TextSendMessage(result_text)
-        line_bot_api.reply_message(event.reply_token, message)
-
-def test7(event):
     formula = 20*x[0]+3*x[1]
     result_text = '由於您的分數是{no}這個區間，達到了5分屬於'.format(no=formula)
     if formula >= 5:
@@ -160,6 +150,10 @@ def test7(event):
         message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
+def test7(event,x):
+    x
+    message = TextSendMessage(x)
+    line_bot_api.reply_message(event.reply_token, message)
 
 
 # 處理訊息
