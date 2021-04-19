@@ -131,7 +131,7 @@ def test4(event,x):
             )
         ]
     )
-def test5(event):
+def test5(event,x):
     formula = 4*x[0]+3*x[1]
     if formula >= 5:
         message = TextSendMessage(text='A.由於您的分數達到了30所以是屬於。。。')
@@ -179,7 +179,7 @@ def handle_message(event):
         message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
 
-x= []
+x = []
 @handler.add(PostbackEvent)
 def handler_postback(event):
     # 我們需要把拿到的data字串轉換成字典，那我們會使用urllib裡的prase_qsl
@@ -206,6 +206,7 @@ def handler_postback(event):
         elif num_data=='0':
             x.append(0)
         test5(event,x)
+    #return x
     
 import os
 if __name__ == "__main__":
