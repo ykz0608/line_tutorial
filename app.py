@@ -116,8 +116,15 @@ def test5(event,x):
         line_bot_api.reply_message(event.reply_token, message)
 
 def test6(event):
+    data = dict(parse_qsl(event.postback.data))
+    num_data = data.get('itemid')
     formula = 20*x[0]+3*x[1]
     result_text = '由於您的分數是{no}這個區間，達到了5分屬於'.format(no=formula)
+    if num_data =='1':
+        x.append(1.0)
+    elif num_data =='0':
+        x.append(0.0)
+
     if formula >= 5:
         message = TextSendMessage(result_text+'a')
         line_bot_api.reply_message(event.reply_token, message)
