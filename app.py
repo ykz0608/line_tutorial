@@ -117,6 +117,17 @@ def test3(event,x):
         message = TextSendMessage('error。。。')
         line_bot_api.reply_message(event.reply_token, message)
 
+def test4(event):
+    profile_name = line_bot_api.get_profile(event.source.user_id).display_name
+    appointment_service_text = '謝謝 {name}~ 您已預訂'.format(name=profile_name)
+    line_bot_api.reply_message(
+        reply_token=event.reply_token,
+        messages=[
+            TextSendMessage(
+                text=appointment_service_text   
+            )
+        ]
+    )
 
 
 
@@ -154,7 +165,7 @@ def handler_postback(event):
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
     num_data = data.get('itemid')
-    x =[]
+    x = []
     
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
@@ -170,7 +181,7 @@ def handler_postback(event):
             x.append(0)
         elif num_data=='0':
             x.append(0)
-        test3(event)
+        test4(event)
     return x
     
 
