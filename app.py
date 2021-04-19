@@ -161,7 +161,7 @@ def test6(event):
         message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
-def test6(event):
+def test7(event):
     message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
 
