@@ -105,7 +105,7 @@ def test4(event,x):
         ]
     )
 
-def test5(event,x):
+def test5(event):
     formula = 4*x[0]+3*x[1]
     if formula >= 5:
         message = TextSendMessage(text='A.由於您的分數達到了30所以是屬於。。。')
