@@ -137,7 +137,7 @@ def test5(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 def cal(x):
-    y = 2*x[0]+3*x[1]
+    y = 2*3+3*3
     return y
 
     
@@ -187,10 +187,7 @@ def handler_postback(event):
         elif num_data=='0':
             x.append(0)
         test5(event)
-        return x
-    #return x
     
-
 # int()
 import os
 if __name__ == "__main__":
