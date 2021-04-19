@@ -106,11 +106,13 @@ def test2(event):
     line_bot_api.reply_message(event.reply_token, message)
 
 def test3(event):
-    y = 23.0+event+3.546456
+    y = cal(x)
     message = TextSendMessage(y)
     line_bot_api.reply_message(event.reply_token, message)
 
-# def calculator():
+def cal(x):
+    y = 2*x[0]+3*x[1]
+    return y
 
     
 
@@ -138,15 +140,29 @@ def handler_postback(event):
     # prase_qsl可以解析一個query字串把它轉換成一個list
     # 那list如果要轉換成字典，在前面加上dict即可
     # 有了字典就可以針對action和server去取得資料（action和server是自定義宣告的，可以做更換）
+
     data = dict(parse_qsl(event.postback.data))
     action_data = data.get('action')
     num_data = data.get('itemid')
+    x =[]
+
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
-    if num_data == '1':
+
+    if action_data == 'step1':
+        if num_data =='1':
+            x.append(1)
+        elif num_data =='0':
+            x.append(0)
         test2(event) 
-    elif num_data == '0':
+    elif action_data == 'step2':
+        if num_data =='1':
+            x.append(0)
+        elif num_data=='0':
+            x.append(0)
         test3(event)
+        return x
+    
 
 # int()
 import os
