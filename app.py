@@ -150,7 +150,7 @@ def test6(event):
         message = TextSendMessage(result_text)
         line_bot_api.reply_message(event.reply_token, message)
 
-def test7(event,x):
+def test7(event):
     formula = 24*x[0]+3*x[1]
     result_text = '由於您的分數是{no}這個區間，達到了5分屬於'.format(no=formula)
     if formula >= 5:
@@ -205,8 +205,8 @@ def handler_postback(event):
             x.append(1)
         elif num_data=='0':
             x.append(0)
-        test7(event,x)
-    #return x
+        test7(event)
+    return x
     
 import os
 if __name__ == "__main__":
