@@ -120,7 +120,7 @@ def test3(event,x):
 
 def test4(event,x):
     y = cal(x)
-    z = int(y)
+    z = str(y)
     profile_name = line_bot_api.get_profile(event.source.user_id).display_name
     appointment_service_text = '恭喜您已完成我們的測試 {name}的分數為 {z} '.format(name=profile_name,num = z)
     line_bot_api.reply_message(
@@ -131,6 +131,10 @@ def test4(event,x):
             )
         ]
     )
+def test5(event):
+    y = cal(x)
+    message = TextSendMessage(y)
+    line_bot_api.reply_message(event.reply_token, message)
 
 def cal(x):
     y = 2*x[0]+3*x[1]
@@ -182,8 +186,8 @@ def handler_postback(event):
             x.append(1)
         elif num_data=='0':
             x.append(0)
-        test4(event,x)
-        return x
+        test5(event)
+        # return x
     #return x
     
 
