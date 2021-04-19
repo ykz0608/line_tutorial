@@ -180,7 +180,7 @@ def handler_postback(event):
             x.append(2.0)
         elif num_data=='0':
             x.append(5.0)
-        test7(event)
+        test5(event)
     
 import os
 if __name__ == "__main__":
