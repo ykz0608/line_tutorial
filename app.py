@@ -34,6 +34,7 @@ def callback():
     return 'OK'
 
 def test1(event):
+    x.clear()
     message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
