@@ -91,7 +91,6 @@ def test3(event,x):
         message = TextSendMessage('error。。。')
         line_bot_api.reply_message(event.reply_token, message)
 
-
 def test4(event,x):
     y = cal(x)
     z = str(y)
@@ -183,7 +182,7 @@ def handler_postback(event):
         elif num_data=='0':
             x.append(0.0)
         test7(event)
-    
+    return x
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
