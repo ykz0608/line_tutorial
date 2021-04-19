@@ -171,15 +171,15 @@ def handler_postback(event):
     if action_data == 'step1':
         del x[:]
         if num_data =='1':
-            x.append(2.0)
+            x.append(1)
         elif num_data =='0':
-            x.append(5.0)
+            x.append(0)
         test2(event) 
     elif action_data == 'step2':
         if num_data =='1':
-            x.append(2.0)
+            x.append(1)
         elif num_data=='0':
-            x.append(5.0)
+            x.append(0)
         test6(event)
     
 import os
