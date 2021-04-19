@@ -132,18 +132,15 @@ def test4(event,x):
         ]
     )
 def test5(event,):
-    # y = cal(x)
-    # z =str(y)
     x =[0,1]
     y = 2*x[0]+3*x[1]
-    message = TextSendMessage(y)
-    line_bot_api.reply_message(event.reply_token, message)
+    if y <= 5:
+        message = TextSendMessage('A.由於您的分數未達到%所以。。。',y)
+        line_bot_api.reply_message(event.reply_token, message)
+    elif y>= 6:
+        message = TextSendMessage('B.由於您的分數未達到%所以。。。',y)
+        line_bot_api.reply_message(event.reply_token, message)
 
-def cal(x):
-    y = 2*3+3*3
-    return y
-
-    
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
