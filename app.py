@@ -182,8 +182,9 @@ def handler_postback(event):
             x.append(0)
         elif num_data=='0':
             x.append(0)
+            return x
         test4(event,x)
-        return x
+       # return x
     
 
 # int()
