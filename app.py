@@ -124,15 +124,15 @@ def test6(event):
         message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
-def test7(event):
-    formula = 3*x[0]+4*x[1]
-    result_text = '由於您的分數是{no}這個區間，達到了5分屬於'.format(no=formula)
-    if formula >= 5:
-        message = TextSendMessage(result_text+'a')
-        line_bot_api.reply_message(event.reply_token, message)
-    elif formula <=4:
-        message = TextSendMessage(result_text+'b')
-        line_bot_api.reply_message(event.reply_token, message)
+# def test7(event):
+#     formula = 3*x[0]+4*x[1]
+#     result_text = '由於您的分數是{no}這個區間，達到了5分屬於'.format(no=formula)
+#     if formula >= 5:
+#         message = TextSendMessage(result_text+'a')
+#         line_bot_api.reply_message(event.reply_token, message)
+#     elif formula <=4:
+#         message = TextSendMessage(result_text+'b')
+#         line_bot_api.reply_message(event.reply_token, message)
 
 
 
