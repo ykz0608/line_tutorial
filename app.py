@@ -169,6 +169,7 @@ def handler_postback(event):
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
 
     if action_data == 'step1':
+        del x[:]
         if num_data =='1':
             x.append(2.0)
         elif num_data =='0':
@@ -179,10 +180,7 @@ def handler_postback(event):
             x.append(2.0)
         elif num_data=='0':
             x.append(5.0)
-        test5(event)
-        
-    del x[:]
-
+        test6(event)
     
 import os
 if __name__ == "__main__":
