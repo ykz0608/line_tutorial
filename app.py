@@ -34,7 +34,6 @@ def callback():
     return 'OK'
 
 def test1(event):
-    del x[:]
     message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
@@ -181,6 +180,8 @@ def handler_postback(event):
         elif num_data=='0':
             x.append(5.0)
         test5(event)
+    del x[:]
+
     
 import os
 if __name__ == "__main__":
