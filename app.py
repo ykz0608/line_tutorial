@@ -150,7 +150,7 @@ def handle_message(event):
     elif message_text == '沒有':
         pass
     else:
-        message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
+        message = TextSendMessage(text='您好，請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
 
 x = []
