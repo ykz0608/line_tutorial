@@ -155,6 +155,7 @@ def handle_message(event):
         message = TextSendMessage(text='請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
 
+x = []
 
 @handler.add(PostbackEvent)
 def handler_postback(event):
@@ -172,17 +173,17 @@ def handler_postback(event):
 
     if action_data == 'step1':
         if num_data =='1':
-            x.append(1.0)
+            x.append(2.0)
         elif num_data =='0':
-            x.append(0.0)
+            x.append(5.0)
         test2(event) 
     elif action_data == 'step2':
         if num_data =='1':
-            x.append(1.0)
+            x.append(2.0)
         elif num_data=='0':
-            x.append(0.0)
+            x.append(5.0)
         test7(event)
-    return x
+    
 import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
