@@ -180,6 +180,7 @@ def handler_postback(event):
         elif num_data=='0':
             x.append(5.0)
         test5(event)
+        
     del x[:]
 
     
