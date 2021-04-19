@@ -105,12 +105,12 @@ def test2(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
-def test3(event):
-    # y = 2*x[0]+3*x[1]
-    if y > 5:
+def test3(event,x):
+    y = 2*x[0]+3*x[1]
+    if y >= 5:
         message = TextSendMessage('A.由於您的分數未達到%所以。。。')
         line_bot_api.reply_message(event.reply_token, message)
-    elif y < 4:
+    elif y <= 4:
         message = TextSendMessage('B.由於您的分數未達到%所以。。。')
         line_bot_api.reply_message(event.reply_token, message)
     else:
@@ -120,9 +120,9 @@ def test3(event):
 
 
 
-# def cal(x):
-#     y = 2*x[0]+3*x[1]
-#     return y
+def cal(x):
+    y = 2*x[0]+3*x[1]
+    return y
 
     
 
@@ -155,7 +155,7 @@ def handler_postback(event):
     action_data = data.get('action')
     num_data = data.get('itemid')
     x =[]
-
+    
     # 接著就是做判斷，判斷我們的action等於什麼，然後做什麼事
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
 
@@ -171,7 +171,7 @@ def handler_postback(event):
         elif num_data=='0':
             x.append(0)
         test3(event)
-        return x
+    return x
     
 
 # int()
