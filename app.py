@@ -18,10 +18,10 @@ line_bot_api = LineBotApi('sOFovsX2G+IF/aWIeps6rHlREUKXOmt5LsplO/okjzexlavY41Ohq
 # Channel Secret
 handler = WebhookHandler('3ea3c4dafa84003e10551844a2f4d830')
 
-# 在第一次接觸到請求之後，就會初始資料庫
-@app.before_first_request
-def init():
-    init_db()
+# # 在第一次接觸到請求之後，就會初始資料庫
+# @app.before_first_request
+# def init():
+#     init_db()
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
