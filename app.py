@@ -18,6 +18,17 @@ line_bot_api = LineBotApi('sOFovsX2G+IF/aWIeps6rHlREUKXOmt5LsplO/okjzexlavY41Ohq
 # Channel Secret
 handler = WebhookHandler('3ea3c4dafa84003e10551844a2f4d830')
 
+# 在第一次接觸到請求之後，就會初始資料庫
+@app.before_first_request
+def init():
+    init_db()
+
+
+# 這個function可以讓我們在flask每一次request結束之後，或是server關閉之後，能夠正確的關閉database的連結
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db_session.remove()
+
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -150,8 +161,7 @@ def test6(event):
         message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
-def test7(event,x):
-    x
+def test6(event):
     message = TextSendMessage(x)
     line_bot_api.reply_message(event.reply_token, message)
 
