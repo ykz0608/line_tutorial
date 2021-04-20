@@ -33,7 +33,7 @@ def callback():
         abort(400)
     return 'OK'
 
-def test1(event):
+def question1(event):
     message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
@@ -56,7 +56,7 @@ def test1(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
-def test2(event):
+def question2(event):
     message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
@@ -114,7 +114,7 @@ def test5(event):
         message = TextSendMessage(text='B.由於您的分數未達到30所以是屬於。。。')
         line_bot_api.reply_message(event.reply_token, message)
 
-def test6(event):
+def result(event):
     formula = 5*x[0]+5*x[1]
     result_text = '由於您的分數是{no}這個區間，屬於'.format(no=formula)
     if formula >= 6:
@@ -144,7 +144,7 @@ def handle_message(event):
     message_text = str(event.message.text).lower()
 
     if message_text =='ai':
-        test1(event)
+        question1(event)
     elif message_text =='有':
         pass
     elif message_text == '沒有':
@@ -174,13 +174,13 @@ def handler_postback(event):
             x.append(1)
         elif num_data =='0':
             x.append(0)
-        test2(event) 
+        question2(event) 
     elif action_data == 'step2':
         if num_data =='1':
             x.append(1)
         elif num_data=='0':
             x.append(0)
-        test6(event)
+        result(event)
     
 import os
 if __name__ == "__main__":
