@@ -68,7 +68,7 @@ def Age0(event):
             PostbackTemplateAction(
                 label='60嵗以下',
                 text='沒有',
-                data='action=step20'
+                data='action=step21'
             )
         ]
     )
@@ -85,22 +85,22 @@ def Age1(event):
             PostbackTemplateAction(
                 label='20-29',
                 text='1',
-                data='action=step21&itemid=24.5'
+                data='action=step22&itemid=24.5'
             ),
             PostbackTemplateAction(
                 label='30-39',
                 text='1',
-                data='action=step21&itemid=34.5'
+                data='action=step22&itemid=34.5'
             ),
             PostbackTemplateAction(
                 label='40-49',
                 text='1',
-                data='action=step21&itemid=44.5'
+                data='action=step22&itemid=44.5'
             ),
             PostbackTemplateAction(
                 label='50-59',
                 text='1',
-                data='action=step21&itemid=54.5'
+                data='action=step22&itemid=54.5'
             )
         ]
     )
@@ -398,18 +398,6 @@ def result(event):
         message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
-def rules(event):
-    data = dict(parse_qsl(event.postback.data))
-    num_data = data.get('itemid')
-
-    if num_data =='1':
-        x.append(1)
-    elif num_data =='0':
-        x.append(0)
-
-def test123(event):
-        message = TextSendMessage(x)
-        line_bot_api.reply_message(event.reply_token, message)
 
 # def test7(event):
 #     formula = 3*x[0]+4*x[1]
@@ -455,18 +443,18 @@ def handler_postback(event):
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
 
     if action_data == 'step1':
-        rules(event)
-        test123(event)
-        # del x[:]
-        # if num_data =='1':
-        #     x.append(1)
-        # elif num_data =='0':
-        #     x.append(0)
-        # Age0(event) 
+        del x[:]
+        if num_data =='1':
+            x.append(1)
+        elif num_data =='0':
+            x.append(0)
+        Age0(event) 
     elif action_data == 'step20':
-        if num_data =='14.5':
-            x.append(14.5)
-        elif num_data=='24.5':
+        Age1(event)
+    elif action_data == 'step21':
+        Age2(event)
+    elif action_data =='step22':
+        if num_data=='24.5':
             x.append(24.5)
         elif num_data=='34.5':
             x.append(34.5)
