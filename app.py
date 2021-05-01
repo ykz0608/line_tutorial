@@ -311,51 +311,6 @@ def Stroke(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
-def question1(event):
-    message = TemplateSendMessage(
-    alt_text='Buttons template',
-    template=ButtonsTemplate(
-        thumbnail_image_url='https://example.com/image.jpg',
-        title='你有XXX嗎？',
-        text='XXX是。。。。。。。',
-        actions=[
-            PostbackTemplateAction(
-                label='有',
-                text='有',
-                data='action=step1&itemid=1'
-            ),
-            PostbackTemplateAction(
-                label='沒有',
-                text='沒有',
-                data='action=step1&itemid=0'
-            )
-        ]
-    )
-)
-    line_bot_api.reply_message(event.reply_token, message)
-
-def question2(event):
-    message = TemplateSendMessage(
-    alt_text='Buttons template',
-    template=ButtonsTemplate(
-        thumbnail_image_url='https://example.com/image.jpg',
-        title='你有YYY嗎？',
-        text='YYY是。。。。。。。',
-        actions=[
-            PostbackTemplateAction(
-                label='有',
-                text='有',
-                data='action=step2&itemid=1'
-            ),
-            PostbackTemplateAction(
-                label='沒有',
-                text='沒有',
-                data='action=step2&itemid=0'
-            )
-        ]
-    )
-)
-    line_bot_api.reply_message(event.reply_token, message)
 
 def test3(event,x):
     y = 2*x[0]+3*x[1]
@@ -367,29 +322,6 @@ def test3(event,x):
         line_bot_api.reply_message(event.reply_token, message)
     else:
         message = TextSendMessage('error。。。')
-        line_bot_api.reply_message(event.reply_token, message)
-
-def test4(event,x):
-    y = cal(x)
-    z = str(y)
-    profile_name = line_bot_api.get_profile(event.source.user_id).display_name
-    appointment_service_text = '恭喜您已完成我們的測試 {name}的分數為 {z} '.format(name=profile_name,num = z)
-    line_bot_api.reply_message(
-        reply_token=event.reply_token,
-        messages=[
-            TextSendMessage(
-                text=appointment_service_text   
-            )
-        ]
-    )
-
-def test5(event):
-    formula = 4*x[0]+3*x[1]
-    if formula >= 5:
-        message = TextSendMessage(text='A.由於您的分數達到了30所以是屬於。。。')
-        line_bot_api.reply_message(event.reply_token, message)
-    elif formula <=4:
-        message = TextSendMessage(text='B.由於您的分數未達到30所以是屬於。。。')
         line_bot_api.reply_message(event.reply_token, message)
 
 def result(event):
@@ -406,19 +338,6 @@ def result(event):
     else :
         message = TextSendMessage('您獲得五十肩的風險機率無法得知，請在10分鐘後再試一次，感謝。')
         line_bot_api.reply_message(event.reply_token, message)
-
-
-# def test7(event):
-#     formula = 3*x[0]+4*x[1]
-#     result_text = '由於您的分數是{no}這個區間，達到了5分屬於'.format(no=formula)
-#     if formula >= 5:
-#         message = TextSendMessage(result_text+'a')
-#         line_bot_api.reply_message(event.reply_token, message)
-#     elif formula <=4:
-#         message = TextSendMessage(result_text+'b')
-#         line_bot_api.reply_message(event.reply_token, message)
-
-
 
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
