@@ -62,25 +62,222 @@ def Age(event):
         text='XXX是。。。。。。。',
         actions=[
             PostbackTemplateAction(
+                label='10-19',
+                text='1',
+                data='action=step2&itemid=14.5'
+            ),
+            PostbackTemplateAction(
                 label='20-29',
-                text='1.',
-                data='action=step1&itemid=1'
+                text='1',
+                data='action=step2&itemid=24.5'
             ),
             PostbackTemplateAction(
                 label='30-39',
-                text='1.',
-                data='action=step1&itemid=0'
+                text='1',
+                data='action=step2&itemid=34.5'
             ),
             PostbackTemplateAction(
-                label='40-39',
-                text='1.',
-                data='action=step1&itemid=2'
+                label='40-49',
+                text='1',
+                data='action=step2&itemid=44.5'
+            ),
+            PostbackTemplateAction(
+                label='50-59',
+                text='1',
+                data='action=step2&itemid=54.5'
+            ),
+            PostbackTemplateAction(
+                label='60-69',
+                text='1',
+                data='action=step2&itemid=64.5'
+            ),
+            PostbackTemplateAction(
+                label='70-79',
+                text='1',
+                data='action=step2&itemid=74.5'
+            ),
+            PostbackTemplateAction(
+                label='80-89',
+                text='1',
+                data='action=step2&itemid=84.5'
+            ),
+            PostbackTemplateAction(
+                label='90-99',
+                text='1',
+                data='action=step2&itemid=94.5'
             )
         ]
     )
 )
     line_bot_api.reply_message(event.reply_token, message)
 
+def sex(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您的性別是?',
+        actions=[
+            PostbackTemplateAction(
+                label='男性',
+                text='男性',
+                data='action=step3&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='女性',
+                text='女性',
+                data='action=step3&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def DM(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有糖尿病嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step4&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step4&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def hyper(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有高血壓嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step5&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step5&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def hyplip(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有高血酯嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step6&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step6&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def CHD(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有心臟病嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step7&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step7&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def COPD(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有呼吸阻塞症嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step8&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step8&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def CHv(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有慢性支氣管炎嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step9&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step9&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def Stroke(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有中風嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step10&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='沒有',
+                text='沒有',
+                data='action=step10&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
 
 def question1(event):
     message = TemplateSendMessage(
@@ -164,7 +361,7 @@ def test5(event):
         line_bot_api.reply_message(event.reply_token, message)
 
 def result(event):
-    formula = 5*x[0]+5*x[1]
+    formula = -2.1+0.39*x[0]+0.038*x[1]-0.554*x[2]+0.848*x[3]+0.147*x[4]+0.623*x[5]-0.06*x[6]+0.267*x[8]+0.178*x[9]+0.459*x[10]
     result_text = '由於您的分數是{no}這個區間，屬於'.format(no=formula)
     if formula >= 6:
         message = TextSendMessage(result_text+'a')
@@ -227,6 +424,68 @@ def handler_postback(event):
             x.append(0)
         Age(event) 
     elif action_data == 'step2':
+        if num_data =='14.5':
+            x.append(14.5)
+        elif num_data=='24.5':
+            x.append(24.5)
+        elif num_data=='34.5':
+            x.append(34.5)
+        elif num_data=='44.5':
+            x.append(44.5)
+        elif num_data=='54.5':
+            x.append(54.5)
+        elif num_data=='64.5':
+            x.append(64.5)
+        elif num_data=='74.5':
+            x.append(74.5)
+        elif num_data=='84.5':
+            x.append(84.5)
+        elif num_data=='94.5':
+            x.append(94.5)
+        sex(event)
+    elif action_data == 'step3':
+        if num_data =='1':
+            x.append(1)
+        elif num_data=='0':
+            x.append(0)
+        DM(event)
+    elif action_data == 'step4':
+        if num_data =='1':
+            x.append(1)
+        elif num_data=='0':
+            x.append(0)
+        hyper(event)
+    elif action_data == 'step5':
+        if num_data =='1':
+            x.append(1)
+        elif num_data=='0':
+            x.append(0)
+        hyplip(event)
+    elif action_data == 'step6':
+        if num_data =='1':
+            x.append(1)
+        elif num_data=='0':
+            x.append(0)
+        CHD(event)
+    elif action_data == 'step7':
+        if num_data =='1':
+            x.append(1)
+        elif num_data=='0':
+            x.append(0)
+        COPD(event)
+    elif action_data == 'step8':
+        if num_data =='1':
+            x.append(1)
+        elif num_data=='0':
+            x.append(0)
+        CHv(event)
+    elif action_data == 'step9':
+        if num_data =='1':
+            x.append(1)
+        elif num_data=='0':
+            x.append(0)
+        Stroke(event)
+    elif action_data == 'step10':
         if num_data =='1':
             x.append(1)
         elif num_data=='0':
