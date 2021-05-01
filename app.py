@@ -66,12 +66,12 @@ def Age0(event):
         actions=[
             PostbackTemplateAction(
                 label='60嵗以下',
-                text='有',
+                text='下',
                 data='action=step20'
             ),
             PostbackTemplateAction(
                 label='60嵗以上',
-                text='沒有',
+                text='上',
                 data='action=step21'
             )
         ]
@@ -403,6 +403,9 @@ def result(event):
     elif Probability <=49:
         message = TextSendMessage(result_text+'請放心。')
         line_bot_api.reply_message(event.reply_token, message)
+    else :
+        message = TextSendMessage('您獲得五十肩的風險機率無法得知，請在試一次。')
+        line_bot_api.reply_message(event.reply_token, message)
 
 
 # def test7(event):
@@ -423,7 +426,7 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
     message_text = str(event.message.text).lower()
-    pass_keyword = ['男性','女性','有','沒有','1']
+    pass_keyword = ['男性','女性','有','沒有','1','下','上']
 
     if message_text =='ai':
         AS1(event)
