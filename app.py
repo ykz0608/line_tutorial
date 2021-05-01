@@ -84,7 +84,7 @@ def Age1(event):
     alt_text='Buttons template',
     template=ButtonsTemplate(
         title='請選擇您的年齡區間',
-        #text='XXX是。。。。。。。',
+        text='請選擇一個',
         actions=[
             PostbackTemplateAction(
                 label='20-29',
@@ -116,7 +116,7 @@ def Age2(event):
     alt_text='Buttons template',
     template=ButtonsTemplate(
         title='請選擇您的年齡區間',
-        #text='XXX是。。。。。。。',
+        text='請選擇一個',
         actions=[
             PostbackTemplateAction(
                 label='60-69',
@@ -394,7 +394,7 @@ def test5(event):
 
 def result(event):
     formula = -2.1+0.39*x[0]+0.038*x[1]-0.554*x[2]+0.848*x[3]+0.147*x[4]+0.623*x[5]-0.06*x[6]+0.267*x[7]+0.178*x[8]+0.459*x[9]
-    Probability = (math.exp(formula)/(1+math.exp(formula)))*100
+    Probability = ((math.exp(formula)/(1+math.exp(formula)))*100).round(decimals=2) 
     result_text = '您獲得五十肩的風險機率是{p}%，'.format(p=Probability)
     if Probability >= 50:
         message = TextSendMessage(result_text+'請小心。')
