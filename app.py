@@ -54,7 +54,28 @@ def AS1(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
-def Age(event):
+def Age0(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='請選擇您的年齡區間',
+        actions=[
+            PostbackTemplateAction(
+                label='60嵗以上',
+                text='有',
+                data='action=step20'
+            ),
+            PostbackTemplateAction(
+                label='60嵗以下',
+                text='沒有',
+                data='action=step20'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def Age1(event):
     message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
@@ -64,43 +85,55 @@ def Age(event):
             PostbackTemplateAction(
                 label='20-29',
                 text='1',
-                data='action=step2&itemid=24.5'
+                data='action=step21&itemid=24.5'
             ),
             PostbackTemplateAction(
                 label='30-39',
                 text='1',
-                data='action=step2&itemid=34.5'
+                data='action=step21&itemid=34.5'
             ),
             PostbackTemplateAction(
                 label='40-49',
                 text='1',
-                data='action=step2&itemid=44.5'
+                data='action=step21&itemid=44.5'
             ),
             PostbackTemplateAction(
                 label='50-59',
                 text='1',
-                data='action=step2&itemid=54.5'
+                data='action=step21&itemid=54.5'
             )
-            # PostbackTemplateAction(
-            #     label='60-69',
-            #     text='1',
-            #     data='action=step2&itemid=64.5'
-            # ),
-            # PostbackTemplateAction(
-            #     label='70-79',
-            #     text='1',
-            #     data='action=step2&itemid=74.5'
-            # ),
-            # PostbackTemplateAction(
-            #     label='80-89',
-            #     text='1',
-            #     data='action=step2&itemid=84.5'
-            # ),
-            # PostbackTemplateAction(
-            #     label='90-99',
-            #     text='1',
-            #     data='action=step2&itemid=94.5'
-            # )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+def Age2(event):
+    message = TemplateSendMessage(
+    alt_text='Buttons template',
+    template=ButtonsTemplate(
+        title='請選擇您的年齡區間',
+        text='XXX是。。。。。。。',
+        actions=[
+            PostbackTemplateAction(
+                label='60-69',
+                text='1',
+                data='action=step22&itemid=64.5'
+            ),
+            PostbackTemplateAction(
+                label='70-79',
+                text='1',
+                data='action=step22&itemid=74.5'
+            ),
+            PostbackTemplateAction(
+                label='80-89',
+                text='1',
+                data='action=step22&itemid=84.5'
+            ),
+            PostbackTemplateAction(
+                label='90-99',
+                text='1',
+                data='action=step22&itemid=94.5'
+            )
         ]
     )
 )
@@ -365,6 +398,19 @@ def result(event):
         message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
+def rules(event):
+    data = dict(parse_qsl(event.postback.data))
+    num_data = data.get('itemid')
+
+    if num_data =='1':
+        x.append(1)
+    elif num_data =='0':
+        x.append(0)
+
+def test123(event):
+        message = TextSendMessage(x)
+        line_bot_api.reply_message(event.reply_token, message)
+
 # def test7(event):
 #     formula = 3*x[0]+4*x[1]
 #     result_text = '由於您的分數是{no}這個區間，達到了5分屬於'.format(no=formula)
@@ -409,13 +455,15 @@ def handler_postback(event):
     # 那我們這邊判斷如果等於step2，我們就做預約的動作
 
     if action_data == 'step1':
-        del x[:]
-        if num_data =='1':
-            x.append(1)
-        elif num_data =='0':
-            x.append(0)
-        Age(event) 
-    elif action_data == 'step2':
+        rules(event)
+        test123(event)
+        # del x[:]
+        # if num_data =='1':
+        #     x.append(1)
+        # elif num_data =='0':
+        #     x.append(0)
+        # Age0(event) 
+    elif action_data == 'step20':
         if num_data =='14.5':
             x.append(14.5)
         elif num_data=='24.5':
