@@ -61,12 +61,12 @@ def Age0(event):
         text='請選擇您的年齡區間',
         actions=[
             PostbackTemplateAction(
-                label='60嵗以上',
+                label='60嵗以下',
                 text='有',
                 data='action=step20'
             ),
             PostbackTemplateAction(
-                label='60嵗以下',
+                label='60嵗以上',
                 text='沒有',
                 data='action=step21'
             )
@@ -398,6 +398,11 @@ def result(event):
         message = TextSendMessage(result_text+'b')
         line_bot_api.reply_message(event.reply_token, message)
 
+def test8(event):
+    message = TextSendMessage(x[1])
+    line_bot_api.reply_message(event.reply_token, message)
+
+
 
 # def test7(event):
 #     formula = 3*x[0]+4*x[1]
@@ -470,7 +475,8 @@ def handler_postback(event):
             x.append(84.5)
         elif num_data=='94.5':
             x.append(94.5)
-        sex(event)
+        #sex(event)
+        test8(event)
     elif action_data == 'step3':
         if num_data =='1':
             x.append(1)
