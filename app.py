@@ -70,27 +70,27 @@ def Age(event):
                 label='20-29',
                 text='1',
                 data='action=step2&itemid=24.5'
+            ),
+            PostbackTemplateAction(
+                label='30-39',
+                text='1',
+                data='action=step2&itemid=34.5'
+            ),
+            PostbackTemplateAction(
+                label='40-49',
+                text='1',
+                data='action=step2&itemid=44.5'
+            ),
+            PostbackTemplateAction(
+                label='50-59',
+                text='1',
+                data='action=step2&itemid=54.5'
+            ),
+            PostbackTemplateAction(
+                label='60-69',
+                text='1',
+                data='action=step2&itemid=64.5'
             )
-            # PostbackTemplateAction(
-            #     label='30-39',
-            #     text='1',
-            #     data='action=step2&itemid=34.5'
-            # ),
-            # PostbackTemplateAction(
-            #     label='40-49',
-            #     text='1',
-            #     data='action=step2&itemid=44.5'
-            # ),
-            # PostbackTemplateAction(
-            #     label='50-59',
-            #     text='1',
-            #     data='action=step2&itemid=54.5'
-            # ),
-            # PostbackTemplateAction(
-            #     label='60-69',
-            #     text='1',
-            #     data='action=step2&itemid=64.5'
-            # ),
             # PostbackTemplateAction(
             #     label='70-79',
             #     text='1',
@@ -395,7 +395,7 @@ def handle_message(event):
         pass
     elif message_text == '沒有':
         pass
-    elif message_text == '1.':
+    elif message_text == '1':
         pass
     else:
         message = TextSendMessage(text='您好，請輸入關鍵字“ai”開始我們的測試')
