@@ -70,42 +70,42 @@ def Age(event):
                 label='20-29',
                 text='1',
                 data='action=step2&itemid=24.5'
-            ),
-            PostbackTemplateAction(
-                label='30-39',
-                text='1',
-                data='action=step2&itemid=34.5'
-            ),
-            PostbackTemplateAction(
-                label='40-49',
-                text='1',
-                data='action=step2&itemid=44.5'
-            ),
-            PostbackTemplateAction(
-                label='50-59',
-                text='1',
-                data='action=step2&itemid=54.5'
-            ),
-            PostbackTemplateAction(
-                label='60-69',
-                text='1',
-                data='action=step2&itemid=64.5'
-            ),
-            PostbackTemplateAction(
-                label='70-79',
-                text='1',
-                data='action=step2&itemid=74.5'
-            ),
-            PostbackTemplateAction(
-                label='80-89',
-                text='1',
-                data='action=step2&itemid=84.5'
-            ),
-            PostbackTemplateAction(
-                label='90-99',
-                text='1',
-                data='action=step2&itemid=94.5'
             )
+            # PostbackTemplateAction(
+            #     label='30-39',
+            #     text='1',
+            #     data='action=step2&itemid=34.5'
+            # ),
+            # PostbackTemplateAction(
+            #     label='40-49',
+            #     text='1',
+            #     data='action=step2&itemid=44.5'
+            # ),
+            # PostbackTemplateAction(
+            #     label='50-59',
+            #     text='1',
+            #     data='action=step2&itemid=54.5'
+            # ),
+            # PostbackTemplateAction(
+            #     label='60-69',
+            #     text='1',
+            #     data='action=step2&itemid=64.5'
+            # ),
+            # PostbackTemplateAction(
+            #     label='70-79',
+            #     text='1',
+            #     data='action=step2&itemid=74.5'
+            # ),
+            # PostbackTemplateAction(
+            #     label='80-89',
+            #     text='1',
+            #     data='action=step2&itemid=84.5'
+            # ),
+            # PostbackTemplateAction(
+            #     label='90-99',
+            #     text='1',
+            #     data='action=step2&itemid=94.5'
+            # )
         ]
     )
 )
