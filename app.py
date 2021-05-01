@@ -388,7 +388,7 @@ def handle_message(event):
     if message_text =='ai':
         AS1(event)
     elif message_text ==pass_keyword:
-            pass
+        pass
     else:
         message = TextSendMessage(text='您好，請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
