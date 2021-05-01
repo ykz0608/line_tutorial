@@ -11,6 +11,8 @@ from linebot.models import *
 
 from urllib.parse import parse_qsl
 
+import math
+
 app = Flask(__name__)
 
 # Channel Access Token
@@ -32,6 +34,8 @@ def callback():
     except InvalidSignatureError:
         abort(400)
     return 'OK'
+
+# flow
 
 def AS1(event):
     message = TemplateSendMessage(
@@ -390,18 +394,14 @@ def test5(event):
 
 def result(event):
     formula = -2.1+0.39*x[0]+0.038*x[1]-0.554*x[2]+0.848*x[3]+0.147*x[4]+0.623*x[5]-0.06*x[6]+0.267*x[7]+0.178*x[8]+0.459*x[9]
-    result_text = '五十肩由於您的分數是{no}這個區間，屬於'.format(no=formula)
-    if formula >= 6:
-        message = TextSendMessage(result_text+'a')
+    Probability = (math.exp(formula)/(1+math.exp(formula)))*100
+    result_text = '您獲得五十肩的風險機率的分數是{p}%，'.format(p=Probability)
+    if formula >= 50:
+        message = TextSendMessage(result_text+'請小心。')
         line_bot_api.reply_message(event.reply_token, message)
-    elif formula <=5:
-        message = TextSendMessage(result_text+'b')
+    elif formula <=49:
+        message = TextSendMessage(result_text+'請放心。')
         line_bot_api.reply_message(event.reply_token, message)
-
-def test8(event):
-    message = TextSendMessage(x[1])
-    line_bot_api.reply_message(event.reply_token, message)
-
 
 
 # def test7(event):
@@ -475,8 +475,7 @@ def handler_postback(event):
             x.append(84.5)
         elif num_data=='94.5':
             x.append(94.5)
-        #sex(event)
-        test8(event)
+        sex(event)
     elif action_data == 'step3':
         if num_data =='1':
             x.append(1)
