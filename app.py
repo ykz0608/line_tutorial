@@ -33,6 +33,28 @@ def callback():
         abort(400)
     return 'OK'
 
+def AS1(event):
+    message = TemplateSendMessage(
+    alt_text='Confirm template',
+    template=ConfirmTemplate(
+        text='您曾經患有脊椎發炎嗎?',
+        actions=[
+            PostbackTemplateAction(
+                label='有',
+                text='有',
+                data='action=step1&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='message',
+                text='message text',
+                data='action=step1&itemid=0'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
+
+
 def question1(event):
     message = TemplateSendMessage(
     alt_text='Buttons template',
@@ -144,7 +166,7 @@ def handle_message(event):
     message_text = str(event.message.text).lower()
 
     if message_text =='ai':
-        question1(event)
+        AS1(event)
     elif message_text =='有':
         pass
     elif message_text == '沒有':
