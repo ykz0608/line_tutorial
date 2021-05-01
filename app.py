@@ -383,15 +383,12 @@ def handle_message(event):
     # message = TextSendMessage(text=event.message.text)
     # line_bot_api.reply_message(event.reply_token, message)
     message_text = str(event.message.text).lower()
+    pass_keyword = ['男性','女性','有','沒有','1']
 
     if message_text =='ai':
         AS1(event)
-    elif message_text =='有':
-        pass
-    elif message_text == '沒有':
-        pass
-    elif message_text == '1':
-        pass
+    elif message_text ==pass_keyword:
+            pass
     else:
         message = TextSendMessage(text='您好，請輸入關鍵字“ai”開始我們的測試')
         line_bot_api.reply_message(event.reply_token, message)
