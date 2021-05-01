@@ -404,7 +404,7 @@ def result(event):
         message = TextSendMessage(result_text+'請放心。')
         line_bot_api.reply_message(event.reply_token, message)
     else :
-        message = TextSendMessage('您獲得五十肩的風險機率無法得知，請在試一次。')
+        message = TextSendMessage('您獲得五十肩的風險機率無法得知，請在10分鐘後再試一次，感謝。')
         line_bot_api.reply_message(event.reply_token, message)
 
 
