@@ -54,28 +54,59 @@ def AS1(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
+# def Age(event):
+#     message = TemplateSendMessage(
+#     alt_text='Buttons template',
+#     template=ButtonsTemplate(
+#         title='請選擇您的年齡區間',
+#         text='XXX是。。。。。。。',
+#         actions=[
+#             PostbackTemplateAction(
+#                 label='20-29',
+#                 text='1.',
+#                 data='action=step1&itemid=1'
+#             ),
+#             PostbackTemplateAction(
+#                 label='30-39',
+#                 text='1.',
+#                 data='action=step1&itemid=0'
+#             ),
+#             PostbackTemplateAction(
+#                 label='40-39',
+#                 text='1.',
+#                 data='action=step1&itemid=2'
+#             )
+#         ]
+#     )
+# )
+#     line_bot_api.reply_message(event.reply_token, message)
+
 def Age(event):
     message = TemplateSendMessage(
     alt_text='Buttons template',
     template=ButtonsTemplate(
-        #thumbnail_image_url='https://example.com/image.jpg',
         title='請選擇您的年齡區間',
         text='XXX是。。。。。。。',
         actions=[
-            PostbackTemplateAction(
+            MessageTemplateAction(
                 label='20-29',
                 text='1.',
-                data='action=step1&itemid=1'
+                data='action=step2&itemid=1'
             ),
-            PostbackTemplateAction(
+            MessageTemplateAction(
                 label='30-39',
                 text='1.',
-                data='action=step1&itemid=0'
+                data='action=step2&itemid=0'
             ),
-            PostbackTemplateAction(
+            MessageTemplateAction(
                 label='40-39',
                 text='1.',
-                data='action=step1&itemid=2'
+                data='action=step2&itemid=2'
+            ),
+            MessageTemplateAction(
+                label='50-59',
+                text='1.',
+                data='action=step2&itemid=3'
             )
         ]
     )
@@ -197,6 +228,8 @@ def handle_message(event):
     elif message_text =='有':
         pass
     elif message_text == '沒有':
+        pass
+    elif message_text == '1.':
         pass
     else:
         message = TextSendMessage(text='您好，請輸入關鍵字“ai”開始我們的測試')
