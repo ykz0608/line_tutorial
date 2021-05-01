@@ -62,11 +62,6 @@ def Age(event):
         text='XXX是。。。。。。。',
         actions=[
             PostbackTemplateAction(
-                label='10-19',
-                text='1',
-                data='action=step2&itemid=14.5'
-            ),
-            PostbackTemplateAction(
                 label='20-29',
                 text='1',
                 data='action=step2&itemid=24.5'
@@ -85,12 +80,12 @@ def Age(event):
                 label='50-59',
                 text='1',
                 data='action=step2&itemid=54.5'
-            ),
-            PostbackTemplateAction(
-                label='60-69',
-                text='1',
-                data='action=step2&itemid=64.5'
             )
+            # PostbackTemplateAction(
+            #     label='60-69',
+            #     text='1',
+            #     data='action=step2&itemid=64.5'
+            # ),
             # PostbackTemplateAction(
             #     label='70-79',
             #     text='1',
@@ -361,8 +356,8 @@ def test5(event):
         line_bot_api.reply_message(event.reply_token, message)
 
 def result(event):
-    formula = -2.1+0.39*x[0]+0.038*x[1]-0.554*x[2]+0.848*x[3]+0.147*x[4]+0.623*x[5]-0.06*x[6]+0.267*x[8]+0.178*x[9]+0.459*x[10]
-    result_text = '由於您的分數是{no}這個區間，屬於'.format(no=formula)
+    formula = -2.1+0.39*x[0]+0.038*x[1]-0.554*x[2]+0.848*x[3]+0.147*x[4]+0.623*x[5]-0.06*x[6]+0.267*x[7]+0.178*x[8]+0.459*x[9]
+    result_text = '五十肩由於您的分數是{no}這個區間，屬於'.format(no=formula)
     if formula >= 6:
         message = TextSendMessage(result_text+'a')
         line_bot_api.reply_message(event.reply_token, message)
