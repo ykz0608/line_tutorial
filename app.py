@@ -45,8 +45,8 @@ def AS1(event):
                 data='action=step1&itemid=1'
             ),
             PostbackTemplateAction(
-                label='message',
-                text='message text',
+                label='沒有',
+                text='沒有',
                 data='action=step1&itemid=0'
             )
         ]
@@ -54,6 +54,33 @@ def AS1(event):
 )
     line_bot_api.reply_message(event.reply_token, message)
 
+def Age(event):
+    message = TemplateSendMessage(
+    alt_text='Buttons template',
+    template=ButtonsTemplate(
+        #thumbnail_image_url='https://example.com/image.jpg',
+        title='請選擇您的年齡區間',
+        text='XXX是。。。。。。。',
+        actions=[
+            PostbackTemplateAction(
+                label='20-29',
+                text='1.',
+                data='action=step1&itemid=1'
+            ),
+            PostbackTemplateAction(
+                label='30-39',
+                text='1.',
+                data='action=step1&itemid=0'
+            ),
+            PostbackTemplateAction(
+                label='40-39',
+                text='1.',
+                data='action=step1&itemid=2'
+            )
+        ]
+    )
+)
+    line_bot_api.reply_message(event.reply_token, message)
 
 def question1(event):
     message = TemplateSendMessage(
@@ -196,7 +223,7 @@ def handler_postback(event):
             x.append(1)
         elif num_data =='0':
             x.append(0)
-        question2(event) 
+        Age(event) 
     elif action_data == 'step2':
         if num_data =='1':
             x.append(1)
