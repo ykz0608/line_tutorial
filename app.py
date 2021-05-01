@@ -387,7 +387,7 @@ def handle_message(event):
 
     if message_text =='ai':
         AS1(event)
-    elif message_text ==pass_keyword:
+    elif message_text in pass_keyword:
         pass
     else:
         message = TextSendMessage(text='您好，請輸入關鍵字“ai”開始我們的測試')
